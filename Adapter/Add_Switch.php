@@ -4,7 +4,7 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `switch` (`id`, `switch_name`,`switch_type`, `port_count`) VALUES (NULL, '".$switch_name."', '".$switch_type."','".$porttype."');";
+      $query = "INSERT INTO `switch` (`id`, `switch_name`,`switch_type`, `port_count`) VALUES (NULL, '".$switch_name."', '".$switch_type."','".$portcount."');";
 
       mysqli_query($con,$query);
       header("location:Add_Switch.php");
