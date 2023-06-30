@@ -129,6 +129,7 @@
                                 <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+
                                         <tr>
                                             <th>Device Name</th>
                                             <th>Base IP</th>
@@ -140,17 +141,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                  
-                                        <tr>
-                                            <td>Chamara's PC</td>
-                                            <td>192.168.40.1/24</td>
-                                            <td>192.168.40.3</td>
-                                            <td>HR department</td>
-                                            <td>VPN client1</td>
-                                            <td><a class="btn btn-primary" >Update</a>
-                                            <a class="btn btn-warning" >Delete</a></td>
-                                        </tr>
-                                        
+                    <?php
+                    include("./connection/config.php");
+                    $query ="SELECT * FROM users";
+                    $sql = mysqli_query($con,$query);
+                    while($row = mysqli_fetch_array($sql))
+                    {
+                       
+                    ?>
+                                           <tr>
+                                                <td><?php echo $row["device_name"];?></td>
+                                                <td><?php echo $row["basenetwork"];?></td>
+                                                <td><?php echo $row["ip"];?></td>
+                                                <td><?php echo $row["vpn_id"];?></td>
+                                                <td><?php echo $row["vpn_name"];?></td>
+                                                <td><?php echo $row["device_type"];?></td>
+                                                <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
+                                                <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
+                                            </tr>
+              <?php } ?>
+                       
                                     </tbody>
                                 </table>
                             </div>
