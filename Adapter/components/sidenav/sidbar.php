@@ -38,9 +38,9 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="Add_Endpoints.php">Add End-Point</a>
-            <a class="collapse-item" href="View_Endpoints.php">View End-Points</a>
             <a class="collapse-item" href="Add_Router.php">Add Routers</a>
             <a class="collapse-item" href="Add_Switch.php">Add Switches</a>
+            <a class="collapse-item" href="View_Endpoints.php">View All Components</a>
         </div>
     </div>
 </li>
@@ -54,9 +54,9 @@
     <div id="users" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">User Adding:</h6>
-            <a class="collapse-item" href="Add_VPNusers.php">Add VPN users</a>
+            <a class="collapse-item" href="Add_VPN_users.php">Add VPN users</a>
             <a class="collapse-item" href="Add_Public_users.php">Add Public Users</a>
-            <a class="collapse-item" href="live_users.php">View Live Users</a>
+            <a class="collapse-item" href="View_Live_users.php">View Live Users</a>
         </div>
     </div>
 </li>
@@ -73,10 +73,10 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="Add_VPN.php">Add VPNs</a>
-            <a class="collapse-item" href="Create_Network">Create Network ID</a>
-            <a class="collapse-item" href="Device_Config.php">Configure Devices</a>
-            <a class="collapse-item" href="Network_Config.php">Device-Network</a>
+            <a class="collapse-item" href="Create_Network">Componenets Connectivity</a>
+            <a class="collapse-item" href="Network_Config.php">VPN User Coonectivity</a>
             <a class="collapse-item" href="Browse.php">Browser Control</a>
+            <a class="collapse-item" href="#">User PING status</a>
         </div>
     </div>
 </li>
@@ -89,26 +89,6 @@
     Network Visualization
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-        aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>User Management</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-        </div>
-    </div>
-</li>
 
 <!-- Nav Item - Charts -->
 <li class="nav-item">
@@ -119,7 +99,7 @@
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
-    <a class="nav-link" href="tables.html">
+    <a class="nav-link" href="#">
         <i class="fas fa-fw fa-table"></i>
         <span>Ip Addressing</span></a>
 </li>
@@ -144,12 +124,12 @@
     <div id="collapseapp" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Application Settings</h6>
-            <a class="collapse-item" href="login.html">Build Application</a>
-            <a class="collapse-item" href="register.html">Access Control</a>
+            <a class="collapse-item" href="#">Build Application</a>
+            <a class="collapse-item" href="#">Access Control</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Application Config</h6>
-            <a class="collapse-item" href="404.html">App Security</a>
-            <a class="collapse-item" href="blank.html">Block Users</a>
+            <a class="collapse-item" href="#">App Security</a>
+            <a class="collapse-item" href="#">Block Users </a>
         </div>
     </div>
 </li>
