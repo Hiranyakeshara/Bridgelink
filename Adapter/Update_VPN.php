@@ -5,15 +5,16 @@ include_once("./connection/config.php");
 if(isset($_POST['update']))
 {    
     $id = $_POST['id'];
-    $name=$_POST['name'];
-    $age=$_POST['age'];
-    $email=$_POST['email'];    
+    $vpn_name=$_POST['vpn_name'];
+    $start_ip=$_POST['start_ip'];
+	$end_ip=$_POST['end_ip'];
+    $user_capacity=$_POST['user_capacity'];    
     
     
-        $result = mysqli_query($connect, "UPDATE users SET name='$name', age='$age',email='$email' WHERE id=$id");
+        $result = mysqli_query($con, "UPDATE vpn SET vpn_name='$vpn_name', start_ip='$start_ip', end_ip='$end_ip', user_capacity='$user_capacity'  WHERE id=$id");
         
         //redirectig to the display page. In our case, it is index.php
-        header("Location: fetch.php");
+        header("Location: Add_VPN.php");
     
 }
 ?>
@@ -23,13 +24,15 @@ if(isset($_POST['update']))
 $id = $_GET['id'];
  
 //selecting data associated with this particular id
-$result = mysqli_query($connect, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($con, "SELECT * FROM vpn WHERE id=$id");
  
 while($row = mysqli_fetch_array($result))
 {
-    $name = $row['name'];
-    $age = $row['age'];
-    $email = $row['email'];
+    $vpn_name = $row['vpn_name'];
+	$start_ip=$row['start_ip'];
+	$end_ip=$row['end_ip'];
+    $user_capacity=$row['user_capacity'];    
+ 
 }
 ?>
 <html>
@@ -44,38 +47,38 @@ while($row = mysqli_fetch_array($result))
 <body>
 	<div class="container" style="width: 800px; margin-top: 100px;">
 		<div class="row">
-    <h3>PHP Weblesson | Add Delete Update  In PHP</h3>
-    <h4><b style="color: red;">Please Subscribe My Youtube Channel</b></h4><hr>
+    <h3>Update VPN</h3>
+
 			<div class="col-sm-6"> 
-	
 	<form action="" method="post" name="form1">
 		<div class="form-group">
 				
-				<input type="hidden" name="name" class="form-control" value="<?php echo $id;?>">
+				<input type="hidden" name="id" class="form-control" value="<?php echo $id;?>">
 			
 		</div>
 		<div class="form-group">
 				<label>VPN Name</label>
-				<input type="text" name="name" class="form-control" value="<?php echo $vpn_name;?>">
+				<input type="text" name="vpn_name" class="form-control" value="<?php echo $vpn_name;?>">
 			
 		</div>
 			   <div class="form-group">
 				<label>Start IP</label>
-				<input type="text" name="age" class="form-control" value=" <?php echo $start_ip; ?>">
+				<input type="text" name="start_ip" class="form-control" value=" <?php echo $start_ip; ?>">
 			</div>
 			 <div class="form-group">
 				<label>End IP</label>
-				<input type="text" name="email" class="form-control" value="<?php echo $end_ip;?>">
+				<input type="text" name="end_ip" class="form-control" value="<?php echo $end_ip;?>">
 			  </div>
               <div class="form-group">
 				<label>User Capacity</label>
-				<input type="text" name="email" class="form-control" value="<?php echo $user_capacity;?>">
+				<input type="text" name="user_capacity" class="form-control" value="<?php echo $user_capacity;?>">
 			  </div>
 				<div class="form-group">
-				<input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">
+				<input type="submit" value="Update" class="btn btn-primary btn-block" name="update">
 			
 		
 	</form>
+	<a href="./Add_VPN.php">Back</a>
 
 </div>
 </div>
