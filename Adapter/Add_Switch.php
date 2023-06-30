@@ -4,10 +4,10 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `users` (`id`, `device_name`,`device_type`, `basenetwork`, `ip`) VALUES (NULL, '".$device_name."', '".$device_type."','".$basenetwork."', '".$ip."');";
+      $query = "INSERT INTO `switch` (`id`, `switch_name`,`switch_type`, `port_count`) VALUES (NULL, '".$switch_name."', '".$switch_type."','".$port_type."');";
 
       mysqli_query($con,$query);
-      header("location:Add_Endpoints.php");
+      header("location:Add_Switch.php");
   }
 
 
@@ -80,10 +80,10 @@
                                 <form action="Add_Switch.php" method="post">
                                 <div class="mb-3">
                                     <label for="switchname" class="form-label">Switch Name</label>
-                                    <input type="text" class="form-control" name="swttch_name" id="dswtichname" >
+                                    <input type="text" class="form-control" name="switch_name" id="switchname" >
                                 </div>
                             <div class="mb-3">
-                            <label for="switchname" class="form-label">Select Device Type</label>
+                            <label for="switchname" class="form-label">Select Switch Type</label>
                              <select class="form-select" aria-label="Default select example" name="switch_type">
                                 <option value="Computer">Router 2000</option>
                                 <option value="Printer">1808</option>

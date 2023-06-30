@@ -4,10 +4,10 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `users` (`id`, `device_name`,`device_type`, `basenetwork`, `ip`) VALUES (NULL, '".$device_name."', '".$device_type."','".$basenetwork."', '".$ip."');";
+      $query = "INSERT INTO `vpn` (`id`, `vpn_name`,`start_ip`, `end_ip`, `user_capacity`) VALUES (NULL, '".$vpn_name."', '".$start_ip."','".$end_ip."', '".$user_capacity."');";
 
       mysqli_query($con,$query);
-      header("location:Add_Endpoints.php");
+      header("location:Add_VPN.php");
   }
 
 

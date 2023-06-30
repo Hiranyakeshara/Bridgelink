@@ -4,10 +4,10 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `users` (`id`, `device_name`,`device_type`, `basenetwork`, `ip`) VALUES (NULL, '".$device_name."', '".$device_type."','".$basenetwork."', '".$ip."');";
+      $query = "INSERT INTO `router` (`id`, `router_name`,`router_type`, `device_count`) VALUES (NULL, '".$router_name."', '".$router_type."','".$devicecount."');";
 
       mysqli_query($con,$query);
-      header("location:Add_Endpoints.php");
+      header("location:Add_Router.php");
   }
 
 
