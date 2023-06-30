@@ -77,14 +77,14 @@
                                 </div>
                                 <div class="card-body">
  <!-- Add Endpoints form -->
-                                <form action="Add_Endpoints.php" method="post">
+                                <form action="Add_Router.php" method="post">
                                 <div class="mb-3">
-                                    <label for="devicename" class="form-label">Router-name Name</label>
-                                    <input type="text" class="form-control" name="device_name" id="devicename" >
+                                    <label for="routername" class="form-label">Router Name</label>
+                                    <input type="text" class="form-control" name="router_name" id="routername" >
                                 </div>
                             <div class="mb-3">
-                            <label for="devicename" class="form-label">Select Device Type</label>
-                             <select class="form-select" aria-label="Default select example" name="device_type">
+                            <label for="routername" class="form-label">Select Device Type</label>
+                             <select class="form-select" aria-label="Default select example" name="router_type">
                                 <option value="Computer">Router 2000</option>
                                 <option value="Printer">1808</option>
                                 <option value="Laptop">Cisco</option>
@@ -92,15 +92,11 @@
                             </select>
                             </div>
                                 <div class="mb-3">
-                                    <label for="basenetworkid" class="form-label">port fa0/1 IP</label>
-                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">IP address</label>
-                                    <input type="text" name="ip" class="form-control" id="Ipaddress" >
+                                    <label for="device_count" class="form-label">Device Count</label>
+                                    <input type="text" class="form-control" name="device_count" id="device_count">
                                 </div>
                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Device</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Add Router</button>
                                 </form>
  <!-- End of Add Endpoints form -->
                                 </div>
@@ -130,10 +126,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Device Name</th>
-                                            <th>Base IP</th>
-                                            <th>IP Address</th>
-                                            <th>Select VPN</th>
+                                            <th>Router Name</th>
+                                            <th>Device Type</th>
+                                            <th>Device count</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>
@@ -143,7 +138,6 @@
                                             <td>Chamara's PC</td>
                                             <td>192.168.40.1/24</td>
                                             <td>192.168.40.3</td>
-                                            <td>VPN client1</td>
                                             <td><a class="btn btn-primary" >Update</a>
                                             <a class="btn btn-warning" >Delete</a></td>
                                         </tr>
