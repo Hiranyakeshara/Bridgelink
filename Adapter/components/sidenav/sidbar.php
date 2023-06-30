@@ -40,6 +40,7 @@
             <a class="collapse-item" href="Add_Endpoints.php">Add End-Point</a>
             <a class="collapse-item" href="View_Endpoints.php">View End-Points</a>
             <a class="collapse-item" href="Add_Router.php">Add Routers</a>
+            <a class="collapse-item" href="Add_Switche.php">Add Switches</a>
         </div>
     </div>
 </li>
