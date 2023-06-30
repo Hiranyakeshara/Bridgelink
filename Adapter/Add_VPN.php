@@ -64,7 +64,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Add Network End-Points</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Add VPN End-Points</h1>
 
                     <div class="row">
 
@@ -73,34 +73,29 @@
                             <!-- Circle Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary"> Device Adding form</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"> VPN Adding form</h6>
                                 </div>
                                 <div class="card-body">
  <!-- Add Endpoints form -->
-                                <form action="Add_Endpoints.php" method="post">
+                                <form action="Add_VPN.php" method="post">
                                 <div class="mb-3">
-                                    <label for="devicename" class="form-label">Device Name</label>
-                                    <input type="text" class="form-control" name="device_name" id="devicename" >
-                                </div>
-                            <div class="mb-3">
-                            <label for="devicename" class="form-label">Select Device Type</label>
-                             <select class="form-select" aria-label="Default select example" name="device_type">
-                                <option value="Computer">Computer</option>
-                                <option value="Printer">Printer</option>
-                                <option value="Laptop">Laptop</option>
-                                <option value="Speaker">Speaker</option>
-                            </select>
-                            </div>
-                                <div class="mb-3">
-                                    <label for="basenetworkid" class="form-label">Base Network ID / default Network ID</label>
-                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
+                                    <label for="vpnname" class="form-label">VPN Name</label>
+                                    <input type="text" class="form-control" name="vpn_name" id="vpnname" >
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">IP address</label>
-                                    <input type="text" name="ip" class="form-control" id="Ipaddress" >
+                                    <label for="startipaddress" class="form-label">Start IP address</label>
+                                    <input type="text" class="form-control" name="startip" id="startip">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="endipaddress" class="form-label">End IP address</label>
+                                    <input type="text" name="endip" class="form-control" id="endip" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="usercapacity" class="form-label">User Capacity</label>
+                                    <input type="text" name="usercapacity" class="form-control" id="usercapacity" >
                                 </div>
                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Device</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Add VPN</button>
                                 </form>
  <!-- End of Add Endpoints form -->
                                 </div>
@@ -130,10 +125,10 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Device Name</th>
-                                            <th>Base IP</th>
-                                            <th>IP Address</th>
-                                            <th>Select VPN</th>
+                                            <th>VPN Name</th>
+                                            <th>Start IP address</th>
+                                            <th>End IP address</th>
+                                            <th>User Capacity</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>
@@ -143,7 +138,7 @@
                                             <td>Chamara's PC</td>
                                             <td>192.168.40.1/24</td>
                                             <td>192.168.40.3</td>
-                                            <td>VPN client1</td>
+                                            <td>HR department</td>
                                             <td><a class="btn btn-primary" >Update</a>
                                             <a class="btn btn-warning" >Delete</a></td>
                                         </tr>
