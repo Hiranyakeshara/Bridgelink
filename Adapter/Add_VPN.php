@@ -133,7 +133,6 @@
                                             <th>Device Name</th>
                                             <th>Base IP</th>
                                             <th>IP Address</th>
-                                            <th>Department</th>
                                             <th>Select VPN</th>
                                             <th>Action Buttons</th>
                                       
@@ -144,7 +143,6 @@
                                             <td>Chamara's PC</td>
                                             <td>192.168.40.1/24</td>
                                             <td>192.168.40.3</td>
-                                            <td>HR department</td>
                                             <td>VPN client1</td>
                                             <td><a class="btn btn-primary" >Update</a>
                                             <a class="btn btn-warning" >Delete</a></td>
