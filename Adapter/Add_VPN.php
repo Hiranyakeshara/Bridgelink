@@ -127,7 +127,7 @@
                                         <tr>
                                             <th>VPN Name</th>
                                             <th>Start IP address</th>
-                                            <th>end IP address</th>
+                                            <th>End IP address</th>
                                             <th>User Capacity</th>
                                             <th>Action Buttons</th>
                                       
