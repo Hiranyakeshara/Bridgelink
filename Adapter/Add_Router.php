@@ -127,7 +127,7 @@
                                     <thead>
                                         <tr>
                                             <th>Router Name</th>
-                                            <th>Device Type</th>
+                                            <th>Router Type</th>
                                             <th>Device count</th>
                                             <th>Action Buttons</th>
                                       

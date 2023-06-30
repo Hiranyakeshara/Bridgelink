@@ -4,7 +4,7 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `users` (`id`, `device_name`,`device_type`, `basenetwork`, `ip`) VALUES (NULL, '".$device_name."', '".$device_type."','".$basenetwork."', '".$ip."');";
+      $query = "INSERT INTO `users` (`id`, `device_name`, `basenetwork`, `ip`, `vpn_id`, `vpn_name`,`device_type`) VALUES (NULL, '".$device_name."','".$basenetwork."', '".$ip."', '".$vpnid."', '".$vpnname."', '".$device_type."');";
 
       mysqli_query($con,$query);
       header("location:Add_Endpoints.php");
