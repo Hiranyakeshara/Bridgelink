@@ -4,7 +4,7 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `vpn` (`id`, `vpn_name`,`start_ip`, `end_ip`, `user_capacity`) VALUES (NULL, '".$vpn_name."', '".$start_ip."','".$end_ip."', '".$user_capacity."');";
+      $query = "INSERT INTO `vpn` (`id`, `vpn_name`,`start_ip`, `end_ip`, `user_capacity`) VALUES (NULL, '".$vpn_name."', '".$startip."','".$endip."', '".$usercapacity."');";
 
       mysqli_query($con,$query);
       header("location:Add_VPN.php");
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="usercapacity" class="form-label">User Capacity</label>
-                                    <input type="text" name="usercapacity" class="form-control" id="usercapacity" >
+                                    <input type="text" name="usercapacity"  class="form-control" id="usercapacity" >
                                 </div>
                                
                                 <button type="submit" name="submit" class="btn btn-primary">Add VPN</button>
