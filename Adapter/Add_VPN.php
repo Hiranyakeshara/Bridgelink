@@ -118,12 +118,13 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Configure Device Here</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Configure VPNS Here</h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+                    
                                         <tr>
                                             <th>VPN Name</th>
                                             <th>Start IP address</th>
@@ -134,14 +135,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+        	      include("./connection/config.php");
+                  $query ="SELECT * FROM vpn";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
                                         <tr>
-                                            <td>Chamara's PC</td>
-                                            <td>192.168.40.1/24</td>
-                                            <td>192.168.40.3</td>
-                                            <td>HR department</td>
-                                            <td><a class="btn btn-primary" >Update</a>
-                                            <a class="btn btn-warning" >Delete</a></td>
+                                            <td><?php echo $row["vpn_name"];?></td>
+                                            <td><?php echo $row["start_ip"];?></td>
+                                            <td><?php echo $row["end_ip"];?></td>
+                                            <td><?php echo $row["user_capacity"];?></td>
+                                            <td><a  href="Update_VPN.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
+                                            <a href="Delete_VPN.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
                                         </tr>
+                                        <?php } ?>
                                         
                                     </tbody>
                                 </table>
