@@ -136,6 +136,7 @@
                                             <th>IP Address</th>
                                             <th>Department</th>
                                             <th>Select VPN</th>
+                                            <th>Device Type</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>

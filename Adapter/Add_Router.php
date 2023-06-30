@@ -85,10 +85,10 @@
                             <div class="mb-3">
                             <label for="routername" class="form-label">Select Device Type</label>
                              <select class="form-select" aria-label="Default select example" name="router_type">
-                                <option value="Computer">Router 2000</option>
-                                <option value="Printer">1808</option>
-                                <option value="Laptop">Cisco</option>
-                                <option value="Speaker">TP link</option>
+                             <option value="200"> 2000</option>
+                                <option value="1808">1808</option>
+                                <option value="Cisco">Cisco</option>
+                                <option value="TP Link">TP link</option>
                             </select>
                             </div>
                                 <div class="mb-3">

@@ -4,10 +4,10 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `switch` (`id`, `switch_name`,`switch_type`, `port_count`) VALUES (NULL, '".$switch_name."', '".$switch_type."','".$portcount."');";
+      $query = "INSERT INTO `users` (`id`, `device_name`,`device_type`, `basenetwork`, `ip`) VALUES (NULL, '".$device_name."', '".$device_type."','".$basenetwork."', '".$ip."');";
 
       mysqli_query($con,$query);
-      header("location:Add_Switch.php");
+      header("location:Add_Endpoints.php");
   }
 
 
@@ -64,7 +64,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Add Network Switches</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Add VPN users</h1>
 
                     <div class="row">
 
@@ -73,30 +73,41 @@
                             <!-- Circle Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary"> Switch Adding form</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"> Enter User Details</h6>
                                 </div>
                                 <div class="card-body">
  <!-- Add Endpoints form -->
-                                <form action="Add_Switch.php" method="post">
+                                <form action="Add_Endpoints.php" method="post">
                                 <div class="mb-3">
-                                    <label for="switchname" class="form-label">Switch Name</label>
-                                    <input type="text" class="form-control" name="switch_name" id="switchname" >
+                                    <label for="devicename" class="form-label">User Name</label>
+                                    <input type="text" class="form-control" name="device_name" id="devicename" >
                                 </div>
                             <div class="mb-3">
-                            <label for="switchname" class="form-label">Select Switch Type</label>
-                             <select class="form-select" aria-label="Default select example" name="switch_type">
-                                <option value="200"> 2000</option>
-                                <option value="1808">1808</option>
-                                <option value="Cisco">Cisco</option>
-                                <option value="TP Link">TP link</option>
+                            <label for="devicename" class="form-label">Select VPN </label>
+                             <select class="form-select" aria-label="Default select example" name="device_type">
+                                <option value="managerVPN">managerVPN</option>
+                                <option value="clientVPN">clientVPN</option>
+                
                             </select>
                             </div>
+                            <div class="mb-3">
+                                    <label for="basenetworkid" class="form-label">Port Foward IP</label>
+                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
+                                </div>
                                 <div class="mb-3">
-                                    <label for="portcount" class="form-label">Port count</label>
-                                    <input type="text" class="form-control" name="portcount" id="portcount">
+                                    <label for="basenetworkid" class="form-label">User Name</label>
+                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" name="ip" class="form-control" id="Ipaddress" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"> Confirm Password</label>
+                                    <input type="password" name="ip" class="form-control" id="Ipaddress" >
                                 </div>
                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Switch</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Add VPN User</button>
                                 </form>
  <!-- End of Add Endpoints form -->
                                 </div>
@@ -105,7 +116,7 @@
                             <!-- Brand Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary"> Switch Connectivity</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">VPN User Status</h6>
                                 </div>
                                 <div class="card-body">
                                  
@@ -119,38 +130,42 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Configure Switch Here</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Update VPN user details</h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+
                                         <tr>
-                                            <th>Switch Name</th>
-                                            <th>Device Type</th>
-                                            <th>Port Count</th>
+                                            <th>User Name</th>
+                                            <th>IP Address</th>
+                                            <th>VPN</th>
+                                            <th>password</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>
                                     </thead>
                                     <tbody>
                     <?php
-        	        include("./connection/config.php");
-                    $query ="SELECT * FROM switch";
+                    include("./connection/config.php");
+                    $query ="SELECT * FROM users";
                     $sql = mysqli_query($con,$query);
                     while($row = mysqli_fetch_array($sql))
                     {
-
-        	        ?>
-                                        <tr>
-                                            <td><?php echo $row["switch_name"];?></td>
-                                            <td><?php echo $row["switch_type"];?></td>
-                                            <td><?php echo $row["port_count"];?></td>
-                                            <td><a  href="Update_Switch.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
-                                            <a href="Delete_Switch.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
-                                        </tr>
+                       
+                    ?>
+                                           <tr>
+                                                <td><?php echo $row["device_name"];?></td>
+                                                <td><?php echo $row["basenetwork"];?></td>
+                                                <td><?php echo $row["ip"];?></td>
+                                                <td><?php echo $row["vpn_id"];?></td>
+\\
+                                                <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
+                                                <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
+                                            </tr>
               <?php } ?>
-                                          
+                       
                                     </tbody>
                                 </table>
                             </div>
