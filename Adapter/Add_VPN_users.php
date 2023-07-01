@@ -5,15 +5,14 @@ include("./connection/config.php");
 $query = "SELECT * FROM vpn";
 $vpnResult = mysqli_query($con, $query);
 
-if(isset($_POST["submit"]))
-{
+if (isset($_POST["submit"])) {
     // Post all values
     extract($_POST);
-    
+
     // Insert the new user into the database
     $insertQuery = "INSERT INTO `VPN_users` (`id`, `device_name`, `basenetwork`, `ip`, `vpn_id`) VALUES (NULL, '$device_name', '$basenetwork', '$ip', '$device_type')";
     mysqli_query($con, $insertQuery);
-    
+
     header("location:Add_VPN_users.php");
 }
 
@@ -69,27 +68,13 @@ if(isset($_POST["submit"]))
                                         </div>
                                         <div class="mb-3">
                                             <label for="devicename" class="form-label">Select VPN</label>
-                                            <select class="form-select" aria-label="Default select example" name="vpn_name">
+                                            <select class="form-select" aria-label="Default select example" name="vpn_type" id="vpnSelect">
                                                 <?php
                                                 // Generate the options dynamically
                                                 while ($row = mysqli_fetch_array($vpnResult)) {
                                                     $vpnId = $row['vpn_id'];
                                                     $vpnName = $row['vpn_name'];
                                                     echo "<option value=\"$vpnId\">$vpnName</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="basenetworkid" class="form-label">Port Forward IP</label>
-                                            <select class="form-select" aria-label="Default select example" name="basenetwork">
-                                                <?php
-                                                // Retrieve the available IP addresses for the selected VPN
-                                                $ipQuery = "SELECT * FROM ip_address WHERE vpn_id = '$device_type'";
-                                                $ipResult = mysqli_query($con, $ipQuery);
-                                                while ($row = mysqli_fetch_array($ipResult)) {
-                                                    $ip = $row['ip_id'];
-                                                    echo "<option value=\"$ip\">$ip</option>";
                                                 }
                                                 ?>
                                             </select>

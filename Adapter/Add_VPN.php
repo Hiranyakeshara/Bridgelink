@@ -4,7 +4,7 @@
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `vpn` (`id`, `vpn_name`,`start_ip`, `end_ip`, `user_capacity`) VALUES (NULL, '".$vpn_name."', '".$startip."','".$endip."', '".$usercapacity."');";
+      $query = "INSERT INTO `vpn` (`vpn_id`, `vpn_name`,`start_ip`, `end_ip`, `user_capacity`) VALUES (NULL, '".$vpn_name."', '".$startip."','".$endip."', '".$usercapacity."');";
 
       mysqli_query($con,$query);
       header("location:Add_VPN.php");
@@ -148,8 +148,8 @@
                                             <td><?php echo $row["start_ip"];?></td>
                                             <td><?php echo $row["end_ip"];?></td>
                                             <td><?php echo $row["user_capacity"];?></td>
-                                            <td><a  href="Update_VPN.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
-                                            <a href="Delete_VPN.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
+                                            <td><a  href="Update_VPN.php?id=<?php echo $row['vpn_id']; ?>" class="btn btn-primary" >Update</a>
+                                            <a href="Delete_VPN.php?id=<?php echo $row['vpn_id']; ?>" class="btn btn-warning" >Delete</a></td>
                                         </tr>
                                         <?php } ?>
                                         
