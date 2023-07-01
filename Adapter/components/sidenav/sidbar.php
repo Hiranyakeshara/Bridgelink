@@ -73,8 +73,6 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="Add_VPN.php">Add VPNs</a>
-            <a class="collapse-item" href="Create_Network">Componenets Connectivity</a>
-            <a class="collapse-item" href="Network_Config.php">VPN User Coonectivity</a>
             <a class="collapse-item" href="Browse.php">Browser Control</a>
             <a class="collapse-item" href="#">User PING status</a>
         </div>
@@ -124,7 +122,7 @@
     <div id="collapseapp" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Application Settings</h6>
-            <a class="collapse-item" href="#">Build Application</a>
+            <a class="collapse-item" href="Build_App.php">Build Application</a>
             <a class="collapse-item" href="#">Access Control</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Application Config</h6>
