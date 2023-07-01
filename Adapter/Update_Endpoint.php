@@ -12,9 +12,6 @@ if(isset($_POST['update']))
 	$vpnname=$_POST['vpn_name'];
     $device_type=$_POST['device_type'];
 	
-       
-    
-    
         $result = mysqli_query($con, "UPDATE users SET device_name='$device_name', basenetwork='$basenetwork', ip='$ip', vpn_id='$vpnid' , vpn_name='$vpnname', device_type='$device_type'  WHERE id=$id");
         
         //redirectig to the display page. In our case, it is index.php
@@ -32,12 +29,12 @@ $result = mysqli_query($con, "SELECT * FROM users WHERE id=$id");
  
 while($row = mysqli_fetch_array($result))
 {
-    $device_name=$_POST['device_name'];
-    $basenetwork=$_POST['basenetwork'];
-    $ip=$_POST['ip'];
-    $vpnid=$_POST['vpn_id'];
-	$vpnname=$_POST['vpn_name'];
-    $device_type=$_POST['device_type']; 
+    $device_name= $row['device_name'];
+    $basenetwork= $row['basenetwork'];
+    $ip= $row['ip'];
+    $vpnid= $row['vpn_id'];
+	$vpnname= $row['vpn_name'];
+    $device_type= $row['device_type']; 
 
 }
 ?>
@@ -64,24 +61,24 @@ while($row = mysqli_fetch_array($result))
 		</div>
 		<div class="form-group">
 				<label>Device Name</label>
-				<input type="text" name="vpn_name" class="form-control" value="<?php echo $device_name;?>">
+				<input type="text" name="device_name" class="form-control" value="<?php echo $device_name;?>">
 			
 		</div>
 			   <div class="form-group">
 				<label>Base IP</label>
-				<input type="text" name="start_ip" class="form-control" value=" <?php echo $basenetwork; ?>">
+				<input type="text" name="basenetwork" class="form-control" value=" <?php echo $basenetwork; ?>">
 			</div>
 			 <div class="form-group">
 				<label>IP Address</label>
-				<input type="text" name="end_ip" class="form-control" value="<?php echo $ip;?>">
+				<input type="text" name="ip" class="form-control" value="<?php echo $ip;?>">
 			  </div>
               <div class="form-group">
 				<label>Department</label>
-				<input type="text" name="user_capacity" class="form-control" value="<?php echo $vpnid;?>">
+				<input type="text" name="vpn_id" class="form-control" value="<?php echo $vpnid;?>">
 			  </div>
               <div class="form-group">
 				<label>Select VPN</label>
-				<input type="text" name="user_capacity" class="form-control" value="<?php echo $vpnname;?>">
+				<input type="text" name="vpn_name" class="form-control" value="<?php echo $vpnname;?>">
 			  </div>
 				<div class="form-group">
 				<input type="submit" value="Update" class="btn btn-primary btn-block" name="update">
