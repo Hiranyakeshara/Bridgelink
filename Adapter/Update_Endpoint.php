@@ -15,7 +15,7 @@ if(isset($_POST['update']))
         $result = mysqli_query($con, "UPDATE users SET device_name='$device_name', basenetwork='$basenetwork', ip='$ip', vpn_id='$vpnid' , vpn_name='$vpnname', device_type='$device_type'  WHERE id=$id");
         
         //redirectig to the display page. In our case, it is index.php
-        header("Location: Add_Endpoint.php");
+        header("Location: Add_Endpoints.php");
     
 }
 ?>
@@ -80,12 +80,17 @@ while($row = mysqli_fetch_array($result))
 				<label>Select VPN</label>
 				<input type="text" name="vpn_name" class="form-control" value="<?php echo $vpnname;?>">
 			  </div>
+			  <div class="form-group">
+				<label>Select Device Type</label>
+				<input type="text" name="device_type" class="form-control" value="<?php echo $device_type;?>">
+			</div>
+
 				<div class="form-group">
 				<input type="submit" value="Update" class="btn btn-primary btn-block" name="update">
 			
 		
 	</form>
-	<a href="./Add_Endpoint.php">Back</a>
+	<a href="./Add_Endpoints.php">Back</a>
 
 </div>
 </div>
