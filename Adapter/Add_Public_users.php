@@ -64,7 +64,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Add VPN users</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Add Public users</h1>
 
                     <div class="row">
 
@@ -88,11 +88,7 @@
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" name="ip" class="form-control" id="Ipaddress" >
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label"> Confirm Password</label>
-                                    <input type="password" name="ip" class="form-control" id="Ipaddress" >
-                                </div>
-                               
+                                
                                 <button type="submit" name="submit" class="btn btn-primary">Add Public User</button>
                                 </form>
  <!-- End of Add Endpoints form -->

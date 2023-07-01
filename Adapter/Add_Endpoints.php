@@ -134,8 +134,6 @@
                                             <th>Device Name</th>
                                             <th>Base IP</th>
                                             <th>IP Address</th>
-                                            <th>Department</th>
-                                            <th>Select VPN</th>
                                             <th>Device Type</th>
                                             <th>Action Buttons</th>
                                       
@@ -144,7 +142,7 @@
                                     <tbody>
                     <?php
                     include("./connection/config.php");
-                    $query ="SELECT * FROM users";
+                    $query ="SELECT * FROM endpoints";
                     $sql = mysqli_query($con,$query);
                     while($row = mysqli_fetch_array($sql))
                     {
@@ -154,8 +152,7 @@
                                                 <td><?php echo $row["device_name"];?></td>
                                                 <td><?php echo $row["basenetwork"];?></td>
                                                 <td><?php echo $row["ip"];?></td>
-                                                <td><?php echo $row["vpn_id"];?></td>
-                                                <td><?php echo $row["vpn_name"];?></td>
+                                             
                                                 <td><?php echo $row["device_type"];?></td>
                                                 <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
                                                 <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>

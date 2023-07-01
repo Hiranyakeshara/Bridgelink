@@ -10,9 +10,8 @@ if (isset($_POST["submit"])) {
     extract($_POST);
 
     // Insert the new user into the database
-    $insertQuery = "INSERT INTO `VPN_users` (`id`, `device_name`, `basenetwork`, `ip`, `vpn_id`) VALUES (NULL, '$device_name', '$basenetwork', '$ip', '$device_type')";
+    $insertQuery = "INSERT INTO `vpn_users` (`user_id`, `user_name`,  `vpn_id`,  `password` ) VALUES (NULL, '$user_name', '$vpn_id', '$password')";
     mysqli_query($con, $insertQuery);
-
     header("location:Add_VPN_users.php");
 }
 
@@ -60,15 +59,16 @@ if (isset($_POST["submit"])) {
                                     <h6 class="m-0 font-weight-bold text-primary">Enter User Details</h6>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Add Endpoints form -->
-                                    <form action="Add_Endpoints.php" method="post">
+                                    <!-- Add VPN_users form -->
+
+                                    <form action="Add_VPN_users.php" method="post">
                                         <div class="mb-3">
                                             <label for="devicename" class="form-label">User Name</label>
-                                            <input type="text" class="form-control" name="device_name" id="devicename">
+                                            <input type="text" class="form-control" name="user_name" >
                                         </div>
                                         <div class="mb-3">
                                             <label for="devicename" class="form-label">Select VPN</label>
-                                            <select class="form-select" aria-label="Default select example" name="vpn_type" id="vpnSelect">
+                                            <select class="form-select" aria-label="Default select example" name="vpn_id">
                                                 <?php
                                                 // Generate the options dynamically
                                                 while ($row = mysqli_fetch_array($vpnResult)) {
@@ -81,19 +81,53 @@ if (isset($_POST["submit"])) {
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                                            <input type="password" name="ip" class="form-control" id="Ipaddress">
+                                            <input type="password" name="password" class="form-control" id="Ipaddress">
                                         </div>
                                         <button type="submit" name="submit" class="btn btn-primary">Add VPN User</button>
                                     </form>
-                                    <!-- End of Add Endpoints form -->
+
+                                    <!-- End of Add VPN form -->
                                 </div>
                             </div>
+
                             <!-- Brand Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">VPN User Status</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Add IP to VPN</h6>
                                 </div>
                                 <div class="card-body">
+                                         <form action="./Add_IP.php" method="post">
+                                        <div class="mb-3">
+                                            <?php 
+                                            include("./connection/config.php");
+                                        $query = "SELECT * FROM vpn";
+                                        $vpnResult = mysqli_query($con, $query);
+
+?>                                      <label for="vpn name" class="form-label">Select VPN</label>
+                                        <select class="form-select" aria-label="Default select example" name="vpn_id" id="vpnSelect">
+                                                <?php
+                                                // Generate the options dynamically
+                                                while ($row = mysqli_fetch_array($vpnResult)) {
+                                                    $vpnId = $row['vpn_id'];
+                                                    $vpnName = $row['vpn_name'];
+                                                    echo "<option value=\"$vpnId\">$vpnName</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="devicename" class="form-label">Base Network </label>
+                                            <input type="text" class="form-control" name="basenetwork" >
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="devicename" class="form-label">IP address </label>
+                                            <input type="text" class="form-control" name="ip" id="devicename">
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-primary">Add IP</button>
+
+                                        </form>
                                 </div>
                             </div>
                         </div>
@@ -108,29 +142,36 @@ if (isset($_POST["submit"])) {
                                             <thead>
                                                 <tr>
                                                     <th>User Name</th>
-                                                    <th>IP Address</th>
-                                                    <th>VPN</th>
-                                                    <th>password</th>
+                                                    <th>VPN ID</th>
+                                                    <th>VPN Name</th>
+                                                    <th>IP address</th>
+                                                    <th>Password</th>
                                                     <th>Action Buttons</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $query = "SELECT * FROM users";
-                                                $sql = mysqli_query($con, $query);
-                                                while ($row = mysqli_fetch_array($sql)) {
-                                                    ?>
-                                                    <tr>
-                                                        <td><?php echo $row["device_name"]; ?></td>
-                                                        <td><?php echo $row["basenetwork"]; ?></td>
-                                                        <td><?php echo $row["ip"]; ?></td>
-                                                        <td><?php echo $row["vpn_id"]; ?></td>
-                                                        <td>
-                                                            <a href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Update</a>
-                                                            <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
+                                            <?php
+                                $query = "SELECT * FROM vpn_users";
+                                $sql = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($sql)) {
+                                     $vpnID = $row["vpn_id"];
+                             $query = "SELECT vpn_name FROM vpn WHERE vpn_id = '$vpnID'";
+                             $vpnResult = mysqli_query($con, $query);
+                             $vpnRow = mysqli_fetch_array($vpnResult);
+                            $vpnName = $vpnRow["vpn_name"];
+                                    ?>
+                    <tr>
+                       <td><?php echo $row["user_name"]; ?></td>
+                      <td><?php echo $row["vpn_id"]; ?></td>
+                         <td><?php echo $vpnName; ?></td>
+        <td><?php echo $row["ip"]; ?></td>
+        <td><?php echo $row["password"]; ?></td>
+        <td>
+            <a href="Update_Endpoint.php?id=<?php echo $row['user_id']; ?>" class="btn btn-primary">Update</a>
+            <a href="Delete_Endpoint.php?id=<?php echo $row['user_id']; ?>" class="btn btn-warning">Delete</a>
+        </td>
+    </tr>
+<?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -153,8 +194,8 @@ if (isset($_POST["submit"])) {
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
-    <?php include_once('../Adapter/components/modal/logout.php'); ?>
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
