@@ -5,11 +5,10 @@ include_once("./connection/config.php");
 if(isset($_POST['update']))
 {    
     $id = $_POST['id'];
-    $router_name=$_POST['router_name'];
-    $router_type=$_POST['router_type'];
-	$devicecount=$_POST['device_count'];
+    $router_name= $_POST['router_name'];
+    $router_type= $_POST['router_type'];
+	$devicecount= $_POST['device_count'];
    
-    
         $result = mysqli_query($con, "UPDATE router SET router_name='$router_name', router_type='$router_type', device_count='$devicecount'  WHERE id=$id");
         
         //redirectig to the display page. In our case, it is index.php
@@ -27,9 +26,9 @@ $result = mysqli_query($con, "SELECT * FROM router WHERE id=$id");
  
 while($row = mysqli_fetch_array($result))
 {
-    $router_name=$_POST['router_name'];
-    $router_type=$_POST['router_type'];
-	$devicecount=$_POST['device_count'];    
+    $router_name= $row['router_name'];
+    $router_type= $row['router_type'];
+	$devicecount= $row['device_count'];    
  
 }
 ?>
