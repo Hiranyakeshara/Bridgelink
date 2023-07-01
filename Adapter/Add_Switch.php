@@ -127,7 +127,7 @@
                                     <thead>
                                         <tr>
                                             <th>Switch Name</th>
-                                            <th>Device Type</th>
+                                            <th>Switch Type</th>
                                             <th>Port Count</th>
                                             <th>Action Buttons</th>
                                       

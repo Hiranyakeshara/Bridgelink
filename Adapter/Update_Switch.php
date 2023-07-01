@@ -27,9 +27,9 @@ $result = mysqli_query($con, "SELECT * FROM switch WHERE id=$id");
  
 while($row = mysqli_fetch_array($result))
 {
-    $switch_name=$_POST['switch_name'];
-    $switch_type=$_POST['switch_type'];
-	$portcount=$_POST['port_count'];
+    $switch_name= $row['switch_name'];
+    $switch_type= $row['switch_type'];
+	$portcount= $row['port_count'];
 
 }
 ?>
@@ -60,7 +60,7 @@ while($row = mysqli_fetch_array($result))
 			
 		</div>
 			   <div class="form-group">
-				<label>Device Type</label>
+				<label>Switch Type</label>
 				<input type="text" name="switch_type" class="form-control" value=" <?php echo $switch_type; ?>">
 			</div>
 			 <div class="form-group">
