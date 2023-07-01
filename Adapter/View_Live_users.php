@@ -63,7 +63,6 @@
                                         <tr>
                                             <th>User Name</th>
                                             <th>Port foward IP address</th>
-                                            <th>User Type</th>
                                             <th>Actual IP address</th>
                                             <th>Country Here</th>
                                             <th>Login Duration</th>

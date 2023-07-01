@@ -10,12 +10,29 @@ if (isset($_POST["submit"])) {
     extract($_POST);
 
     // Insert the new user into the database
-    $insertQuery = "INSERT INTO `vpn_users` (`user_id`, `user_name`,  `vpn_id`,  `password` ) VALUES (NULL, '$user_name', '$vpn_id', '$password')";
-    mysqli_query($con, $insertQuery);
+    $insertQueryone = "INSERT INTO `vpn_users` (`user_id`, `user_name`,  `vpn_id`,  `password` ) VALUES (NULL, '$user_name', '$vpn_id', '$password')";
+    mysqli_query($con, $insertQueryone);
     header("location:Add_VPN_users.php");
-}
+} 
 
 ?>
+
+<?php 
+
+include("./connection/config.php");
+if (isset($_POST["addip"])) {
+    // Post all values
+    extract($_POST);
+
+    // Insert the new user into the database
+    $insertQuery = "INSERT INTO `ip_address` (`ip_id`,  `vpn_id`, `base_network`,  `ip` ) VALUES (NULL, '$vpn_id', '$basenetwork','$ip')";
+    mysqli_query($con, $insertQuery);
+    header("location:Add_VPN_users.php");
+} 
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +78,7 @@ if (isset($_POST["submit"])) {
                                 <div class="card-body">
                                     <!-- Add VPN_users form -->
 
-                                    <form action="Add_VPN_users.php" method="post">
+                                    <form action="" method="post">
                                         <div class="mb-3">
                                             <label for="devicename" class="form-label">User Name</label>
                                             <input type="text" class="form-control" name="user_name" >
@@ -96,7 +113,7 @@ if (isset($_POST["submit"])) {
                                     <h6 class="m-0 font-weight-bold text-primary">Add IP to VPN</h6>
                                 </div>
                                 <div class="card-body">
-                                         <form action="./Add_IP.php" method="post">
+                                         <form action="" method="post">
                                         <div class="mb-3">
                                             <?php 
                                             include("./connection/config.php");
@@ -125,7 +142,7 @@ if (isset($_POST["submit"])) {
                                             <label for="devicename" class="form-label">IP address </label>
                                             <input type="text" class="form-control" name="ip" id="devicename">
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-primary">Add IP</button>
+                                        <button type="submit" name="addip" class="btn btn-primary">Add IP</button>
 
                                         </form>
                                 </div>
