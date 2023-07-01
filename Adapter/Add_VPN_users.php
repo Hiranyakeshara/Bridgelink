@@ -69,11 +69,11 @@ if(isset($_POST["submit"]))
                                         </div>
                                         <div class="mb-3">
                                             <label for="devicename" class="form-label">Select VPN</label>
-                                            <select class="form-select" aria-label="Default select example" name="device_type">
+                                            <select class="form-select" aria-label="Default select example" name="vpn_name">
                                                 <?php
                                                 // Generate the options dynamically
                                                 while ($row = mysqli_fetch_array($vpnResult)) {
-                                                    $vpnId = $row['id'];
+                                                    $vpnId = $row['vpn_id'];
                                                     $vpnName = $row['vpn_name'];
                                                     echo "<option value=\"$vpnId\">$vpnName</option>";
                                                 }
@@ -88,7 +88,7 @@ if(isset($_POST["submit"]))
                                                 $ipQuery = "SELECT * FROM ip_address WHERE vpn_id = '$device_type'";
                                                 $ipResult = mysqli_query($con, $ipQuery);
                                                 while ($row = mysqli_fetch_array($ipResult)) {
-                                                    $ip = $row['ip'];
+                                                    $ip = $row['ip_id'];
                                                     echo "<option value=\"$ip\">$ip</option>";
                                                 }
                                                 ?>
