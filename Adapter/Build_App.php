@@ -1,21 +1,20 @@
-<?php   
+<?php  
+
   include("./connection/config.php");
+
+// Retrieve the available VPNs from the database
+$query = "SELECT * FROM vpn";
+$vpnResult = mysqli_query($con, $query);
+
   if(isset($_POST["submit"]))
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `users` (`id`, `device_name`, `basenetwork`, `ip`, `vpn_id`, `vpn_name`,`device_type`) VALUES (NULL, '".$device_name."','".$basenetwork."', '".$ip."', '".$vpnid."', '".$vpnname."', '".$device_type."');";
-
+      $query = "INSERT INTO `app` (`id`, `app_name`, `vpn_id`, `vpn_name`, `app_link`) VALUES (NULL, '".$app_name."','".$vpn_id."', '".$vpn_name."', '".$applink."');";
       mysqli_query($con,$query);
-      header("location:Add_Endpoints.php");
+      header("location:Build_App.php");
   }
-
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,20 +79,24 @@
                                 <form action="Build_App.php" method="post">
                                 <div class="mb-3">
                                     <label for="devicename" class="form-label">Application Name</label>
-                                    <input type="text" class="form-control" name="app_name" id="appname" >
+                                    <input type="text" class="form-control" name="app_name">
                                 </div>
                             <div class="mb-3">
                             <label for="devicename" class="form-label">Select Application VPN</label>
-                             <select class="form-select" aria-label="Default select example" name="device_type">
-                                <option value="Computer"></option>
-                                <option value="Printer">Printer</option>
-                                <option value="Laptop">Laptop</option>
-                                <option value="Speaker">Speaker</option>
+                             <select class="form-select" aria-label="Default select example" name="vpn_id">
+                             <?php
+                                                // Generate the options dynamically
+                                                while ($row = mysqli_fetch_array($vpnResult)) {
+                                                    $vpnId = $row['vpn_id'];
+                                                    $vpnName = $row['vpn_name'];
+                                                    echo "<option value=\"$vpnId\">$vpnName</option>";
+                                                }
+                                                ?>
                             </select>
                             </div>
                                 <div class="mb-3">
-                                    <label for="basenetworkid" class="form-label">Application Link</label>
-                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
+                                    <label for="basenetworkid" class="form-label" >Application Link</label>
+                                    <input type="text" class="form-control" name="applink"  id="basenetworkID">
                                 </div>
                                
                                
@@ -106,7 +109,7 @@
                             <!-- Brand Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">End-Points Coonectivity</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Application VPN setup</h6>
                                 </div>
                                 <div class="card-body">
                                  
@@ -120,7 +123,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Configure Device Here</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Application Links</h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="table-responsive">
@@ -128,10 +131,10 @@
                                     <thead>
 
                                         <tr>
-                                            <th>Device Name</th>
-                                            <th>Base IP</th>
-                                            <th>IP Address</th>
-                                            <th>Device Type</th>
+                                            <th>Application Name</th>
+                                            <th>VPN_ID</th>
+                                            <th>VPN Name</th>
+                                            <th>Application Link</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>
@@ -139,18 +142,23 @@
                                     <tbody>
                     <?php
                     include("./connection/config.php");
-                    $query ="SELECT * FROM endpoints";
+                    $query ="SELECT * FROM app";
                     $sql = mysqli_query($con,$query);
-                    while($row = mysqli_fetch_array($sql))
-                    {
+                    while($row = mysqli_fetch_array($sql)) {
+                    $vpnID = $row["vpn_id"];
+                    $query = "SELECT vpn_name FROM vpn WHERE vpn_id = '$vpnID'";
+                    $vpnResult = mysqli_query($con, $query);
+                    $vpnRow = mysqli_fetch_array($vpnResult);
+                   $vpnName = $vpnRow["vpn_name"];
+                           ?>
+                    
                        
-                    ?>
                                            <tr>
-                                                <td><?php echo $row["device_name"];?></td>
-                                                <td><?php echo $row["basenetwork"];?></td>
-                                                <td><?php echo $row["ip"];?></td>
-                                             
-                                                <td><?php echo $row["device_type"];?></td>
+                                                <td><?php echo $row["app_name"];?></td>
+                                                <td><?php echo $row["vpn_id"];?></td>
+                                                <td><?php echo $vpnName; ?></td>
+                                                <td><?php echo $row["app_link"];?></td>
+                                              
                                                 <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
                                                 <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
                                             </tr>

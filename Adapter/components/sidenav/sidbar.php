@@ -73,7 +73,6 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="Add_VPN.php">Add VPNs</a>
-            <a class="collapse-item" href="Browse.php">Browser Control</a>
             <a class="collapse-item" href="#">User PING status</a>
         </div>
     </div>
@@ -123,11 +122,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Application Settings</h6>
             <a class="collapse-item" href="Build_App.php">Build Application</a>
-            <a class="collapse-item" href="#">Access Control</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Application Config</h6>
-            <a class="collapse-item" href="#">App Security</a>
-            <a class="collapse-item" href="#">Block Users </a>
+            <a class="collapse-item" href="Browse.php">Browser Control</a>
         </div>
     </div>
 </li>

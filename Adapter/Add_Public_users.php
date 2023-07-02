@@ -78,7 +78,6 @@ if (isset($_POST["submit"])) {
                                         <tr>
                                             <th>User Name</th>
                                             <th>Password</th>
-
                                             <th>Action Buttons</th>
                                       
                                         </tr>
