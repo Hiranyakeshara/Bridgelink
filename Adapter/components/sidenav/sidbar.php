@@ -121,7 +121,8 @@
     <div id="collapseapp" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Application Settings</h6>
-            <a class="collapse-item" href="Build_App.php">Build Application</a>
+            <a class="collapse-item" href="Build_App.php">Build VPN Application</a>
+            <a class="collapse-item" href="Build_App_Public.php">Build Public Application</a>
             <a class="collapse-item" href="Browse.php">Browser Control</a>
         </div>
     </div>

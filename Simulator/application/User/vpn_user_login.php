@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($result) === 1) {
         $_SESSION['SESSION_VPN'] = $vpn_id;
+        $_SESSION['SESSION_USERNAME'] = $username;
         header("Location: vpn_user_dashboard.php");
         exit(); // Make sure to add an exit() after the header redirect
     } else {

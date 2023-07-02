@@ -16,7 +16,8 @@ We will create a family tree using just CSS(3)
 The markup will be simple nested lists
 -->
 <div class="container">
-    <a href="../User/" >Back to Portal</a>
+
+	<a href="../User/userlogin.php" class="btn btn-primary">Login</a>
 <div class="tree">
 	<ul>
 		<li>
@@ -88,7 +89,7 @@ The markup will be simple nested lists
                         <?php
                 include("./connection/config.php");
         	    
-                  $query ="SELECT * FROM users";
+                  $query ="SELECT * FROM endpoints";
                   $sql = mysqli_query($con,$query);
                   while($row = mysqli_fetch_array($sql))
                   {

@@ -86,9 +86,12 @@ $vpnResult = mysqli_query($con, $query);
                     </div></div></div>
                 </div>     
         </div>
+        <a href="../NetworkDesign/network.php" class="btn btn-primary">View Network Design</a>
     </div>
-
+ 
 </div>
+
+
 
 </body>
 </html>

@@ -1,19 +1,18 @@
-<?php   
+<?php  
+
   include("./connection/config.php");
+
+
+
   if(isset($_POST["submit"]))
   {
       //post all value
       extract($_POST);
-      $query = "INSERT INTO `endpoints` (`id`, `device_name`, `basenetwork`, `ip`, `vpn_id`, `vpn_name`,`device_type`) VALUES (NULL, '".$device_name."','".$basenetwork."', '".$ip."', '".$vpnid."', '".$vpnname."', '".$device_type."');";
-
+      $query = "INSERT INTO `public_app` (`id`, `app_name`, `link`) VALUES (NULL, '".$app_name."','".$applink."');";
       mysqli_query($con,$query);
-      header("location:Add_Endpoints.php");
-      
+      header("location:Build_App_Public.php");
   }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +61,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Add Network End-Points</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Build Public Application</h1>
 
                     <div class="row">
 
@@ -71,34 +70,22 @@
                             <!-- Circle Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary"> Device Adding form</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"> Intergrate Application</h6>
                                 </div>
                                 <div class="card-body">
- <!-- Add Endpoints form -->
-                                <form action="Add_Endpoints.php" method="post">
+ <!-- Build Application form -->
+                                <form action="Build_App_Public.php" method="post">
                                 <div class="mb-3">
-                                    <label for="devicename" class="form-label">Device Name</label>
-                                    <input type="text" class="form-control" name="device_name" id="devicename" >
-                                </div>
-                            <div class="mb-3">
-                            <label for="devicename" class="form-label">Select Device Type</label>
-                             <select class="form-select" aria-label="Default select example" name="device_type">
-                                <option value="Computer">Computer</option>
-                                <option value="Printer">Printer</option>
-                                <option value="Laptop">Laptop</option>
-                                <option value="Speaker">Speaker</option>
-                            </select>
-                            </div>
-                                <div class="mb-3">
-                                    <label for="basenetworkid" class="form-label">Base Network ID / default Network ID</label>
-                                    <input type="text" class="form-control" name="basenetwork" id="basenetworkID">
+                                    <label for="devicename" class="form-label">Application Name</label>
+                                    <input type="text" class="form-control" name="app_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">IP address</label>
-                                    <input type="text" name="ip" class="form-control" id="Ipaddress" >
+                                    <label for="basenetworkid" class="form-label" >Application Link</label>
+                                    <input type="text" class="form-control" name="applink"  id="basenetworkID">
                                 </div>
                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Device</button>
+                               
+                                <button type="submit" name="submit" class="btn btn-primary">Add Application</button>
                                 </form>
  <!-- End of Add Endpoints form -->
                                 </div>
@@ -107,7 +94,7 @@
                             <!-- Brand Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">End-Points Coonectivity</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Application Browser setup</h6>
                                 </div>
                                 <div class="card-body">
                                  
@@ -121,7 +108,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Configure Device Here</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Application Links</h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="table-responsive">
@@ -129,10 +116,8 @@
                                     <thead>
 
                                         <tr>
-                                            <th>Device Name</th>
-                                            <th>Base IP</th>
-                                            <th>IP Address</th>
-                                            <th>Device Type</th>
+                                            <th>Application Name</th>
+                                            <th>Application Link</th>
                                             <th>Action Buttons</th>
                                       
                                         </tr>
@@ -140,18 +125,16 @@
                                     <tbody>
                     <?php
                     include("./connection/config.php");
-                    $query ="SELECT * FROM endpoints";
+                    $query ="SELECT * FROM public_app";
                     $sql = mysqli_query($con,$query);
-                    while($row = mysqli_fetch_array($sql))
-                    {
+                    while($row = mysqli_fetch_array($sql)) {
+;
+                           ?>
+                    
                        
-                    ?>
                                            <tr>
-                                                <td><?php echo $row["device_name"];?></td>
-                                                <td><?php echo $row["basenetwork"];?></td>
-                                                <td><?php echo $row["ip"];?></td>
-                                             
-                                                <td><?php echo $row["device_type"];?></td>
+                                                <td><?php echo $row["app_name"];?></td>
+                                                <td><?php echo $row["link"];?></td>                                             
                                                 <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
                                                 <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
                                             </tr>
