@@ -1,3 +1,50 @@
+<?php
+    include("./connection/config.php");
+
+    // Retrieve the counts from the database
+    $query = "SELECT
+                (SELECT COUNT(*) FROM ping) AS total_ping_count,
+                (SELECT COUNT(*) FROM public_users) AS total_public_users_count,
+                (SELECT COUNT(*) FROM vpn_users) AS total_vpn_users_count,
+                (SELECT COUNT(*) FROM ip_address) AS total_ip_addresses_count,
+                (SELECT COUNT(*) FROM ip_address) AS total_basenetworks_count,
+                (SELECT COUNT(*) FROM vpn) AS total_vpns_count,
+                (SELECT COUNT(*) FROM router) AS total_routers_count,
+                (SELECT COUNT(*) FROM switch) AS total_switches_count,
+                (SELECT COUNT(*) FROM endpoints) AS total_endpoints_count";
+
+    $result = mysqli_query($con, $query);
+
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $total_ping_count = $row['total_ping_count'];
+        $total_public_users_count = $row['total_public_users_count'];
+        $total_vpn_users_count = $row['total_vpn_users_count'];
+        $total_ip_addresses_count = $row['total_ip_addresses_count'];
+        $total_basenetworks_count = $row['total_basenetworks_count'];
+        $total_vpns_count = $row['total_vpns_count'];
+        $total_routers_count = $row['total_routers_count'];
+        $total_switches_count = $row['total_switches_count'];
+        $total_endpoints_count = $row['total_endpoints_count'];
+    } else {
+        // Error handling if the query fails
+        // You can set default values or display an error message
+        $total_ping_count = 0;
+        $total_public_users_count = 0;
+        $total_vpn_users_count = 0;
+        $total_ip_addresses_count = 0;
+        $total_basenetworks_count = 0;
+        $total_vpns_count = 0;
+        $total_routers_count = 0;
+        $total_switches_count = 0;
+        $total_endpoints_count = 0;
+    }
+
+    // Close the database connection
+    mysqli_close($con);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +106,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Ping Counts</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_ping_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -75,7 +122,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Public Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_public_users_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -92,7 +139,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total VPN Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_vpn_users_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -108,8 +155,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total VPN Addresses </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                                Total IP Addresses </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_ip_addresses_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -125,7 +172,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Base Networks </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_basenetworks_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -141,7 +188,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total VPN's </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_vpns_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -160,7 +207,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Routers</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_routers_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -180,7 +227,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">56</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $total_switches_count; ?></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -207,7 +254,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 End-Points</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_endpoints_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
