@@ -23,12 +23,7 @@
     <a href="./application/User/userlogin.php" class="btn btn-primary">Login to Network</a>
   </div>
 </div>
-    </div>
-    
-
-
-
- 
+    </div> 
     <div class="loading-page">
     <div class="name-container">
             <div class="logo-brand">
@@ -46,3 +41,4 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./script.js"></script>
 </html>
+

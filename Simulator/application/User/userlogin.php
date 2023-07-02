@@ -50,14 +50,14 @@ $vpnResult = mysqli_query($con, $query);
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Enter Username</span>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" >
+                                    <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" >
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                    <input type="password" id="inputPassword5" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" id="inputPassword5" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-lg">Login</button>
                                 </div>
 
                         </form>
@@ -67,7 +67,7 @@ $vpnResult = mysqli_query($con, $query);
                     <div class="col-sm-6">
                     <div class="card h-100">
                     <div class="card-body">
-                        
+
                         <form action ="public_user_login.php" method="post">
                             <h2>Public Login </h2>
                                 <div class="input-group mb-3">

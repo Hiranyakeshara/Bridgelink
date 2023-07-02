@@ -3,7 +3,6 @@
 
     // Retrieve the counts from the database
     $query = "SELECT
-                (SELECT COUNT(*) FROM ping) AS total_ping_count,
                 (SELECT COUNT(*) FROM public_users) AS total_public_users_count,
                 (SELECT COUNT(*) FROM vpn_users) AS total_vpn_users_count,
                 (SELECT COUNT(*) FROM ip_address) AS total_ip_addresses_count,
@@ -17,7 +16,6 @@
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        $total_ping_count = $row['total_ping_count'];
         $total_public_users_count = $row['total_public_users_count'];
         $total_vpn_users_count = $row['total_vpn_users_count'];
         $total_ip_addresses_count = $row['total_ip_addresses_count'];
