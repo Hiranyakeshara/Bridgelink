@@ -24,7 +24,7 @@ $vpnResult = mysqli_query($con, $query);
 
     <!-- Login form-->
 <div class="container square-box d-flex justify-content-center">
-    <div class="card vw-100 vh-50 text-center">  
+    <div class="card vw-10 vh-50 text-center">  
         <div class="card-body">
 
             <h1>Login to our network </h1>
@@ -68,22 +68,23 @@ $vpnResult = mysqli_query($con, $query);
                     <div class="card h-100">
                     <div class="card-body">
 
-                        <form action ="public_user_login.php" method="post">
+                        <form action ="./public_user_login.php" method="post">
                             <h2>Public Login </h2>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" >
+                                    <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" >
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                    <input type="password" id="inputPassword5" class="form-control" placeholder="Password">
+                                    <input type="password" id="inputPassword5" name="password" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-lg">Login</button>
                                 </div>
                         </form> 
 
                     </div></div></div>
+
                 </div>     
         </div>
         <a href="../NetworkDesign/network.php" class="btn btn-primary">View Network Design</a>
