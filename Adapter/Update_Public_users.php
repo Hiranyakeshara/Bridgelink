@@ -43,7 +43,7 @@ while($row = mysqli_fetch_array($result))
 <body>
 	<div class="container" style="width: 800px; margin-top: 100px;">
 		<div class="row">
-    <h3>Update Router</h3>
+    <h3>Update Public User</h3>
 
 			<div class="col-sm-6"> 
 	<form action="" method="post" name="form1">
