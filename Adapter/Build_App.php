@@ -81,19 +81,19 @@ $vpnResult = mysqli_query($con, $query);
                                     <label for="devicename" class="form-label">Application Name</label>
                                     <input type="text" class="form-control" name="app_name">
                                 </div>
-                            <div class="mb-3">
-                            <label for="devicename" class="form-label">Select Application VPN</label>
-                             <select class="form-select" aria-label="Default select example" name="vpn_id">
-                             <?php
+                                <div class="mb-3">
+                                    <label for="devicename" class="form-label">Select Application VPN</label>
+                                    <select class="form-select" aria-label="Default select example" name="vpn_id">
+                                         <?php
                                                 // Generate the options dynamically
                                                 while ($row = mysqli_fetch_array($vpnResult)) {
                                                     $vpnId = $row['vpn_id'];
                                                     $vpnName = $row['vpn_name'];
                                                     echo "<option value=\"$vpnId\">$vpnName</option>";
                                                 }
-                                                ?>
-                            </select>
-                            </div>
+                                            ?>
+                                    </select>
+                                </div>
                                 <div class="mb-3">
                                     <label for="basenetworkid" class="form-label" >Application Link</label>
                                     <input type="text" class="form-control" name="applink"  id="basenetworkID">
@@ -140,29 +140,29 @@ $vpnResult = mysqli_query($con, $query);
                                         </tr>
                                     </thead>
                                     <tbody>
-                    <?php
-                    include("./connection/config.php");
-                    $query ="SELECT * FROM app";
-                    $sql = mysqli_query($con,$query);
-                    while($row = mysqli_fetch_array($sql)) {
-                    $vpnID = $row["vpn_id"];
-                    $query = "SELECT vpn_name FROM vpn WHERE vpn_id = '$vpnID'";
-                    $vpnResult = mysqli_query($con, $query);
-                    $vpnRow = mysqli_fetch_array($vpnResult);
-                   $vpnName = $vpnRow["vpn_name"];
-                           ?>
+                                <?php
+                                    include("./connection/config.php");
+                                        $query ="SELECT * FROM app";
+                                        $sql = mysqli_query($con,$query);
+                                            while($row = mysqli_fetch_array($sql)) {
+                                                $vpnID = $row["vpn_id"];
+                                                $query = "SELECT vpn_name FROM vpn WHERE vpn_id = '$vpnID'";
+                                                $vpnResult = mysqli_query($con, $query);
+                                                $vpnRow = mysqli_fetch_array($vpnResult);
+                                                $vpnName = $vpnRow["vpn_name"];
+                                ?>
                     
                        
-                                           <tr>
-                                                <td><?php echo $row["app_name"];?></td>
-                                                <td><?php echo $row["vpn_id"];?></td>
-                                                <td><?php echo $vpnName; ?></td>
-                                                <td><?php echo $row["app_link"];?></td>
+                                        <tr>
+                                            <td><?php echo $row["app_name"];?></td>
+                                            <td><?php echo $row["vpn_id"];?></td>
+                                            <td><?php echo $vpnName; ?></td>
+                                            <td><?php echo $row["app_link"];?></td>
                                               
-                                                <td><a  href="Update_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
-                                                <a href="Delete_Endpoint.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
-                                            </tr>
-              <?php } ?>
+                                            <td><a  href="Update_App.php?id=<?php echo $row['id']; ?>" class="btn btn-primary" >Update</a>
+                                                <a href="Delete_App.php?id=<?php echo $row['id']; ?>" class="btn btn-warning" >Delete</a></td>
+                                        </tr>
+                                    <?php } ?>
                        
                                     </tbody>
                                 </table>
