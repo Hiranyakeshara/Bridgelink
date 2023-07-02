@@ -32,7 +32,7 @@ $vpnResult = mysqli_query($con, $query);
                     <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="card h-100">
                     <div class="card-body">
-                        <form action ="vpn_user.php" method="post">
+                        <form action ="./vpn_user_login.php" method="post">
 
                             <h2>VPN Login </h2> 
                                 <div class="input-group mb-3">
@@ -67,8 +67,8 @@ $vpnResult = mysqli_query($con, $query);
                     <div class="col-sm-6">
                     <div class="card h-100">
                     <div class="card-body">
-                        <form action ="public_user.php" method="post">
-
+                        
+                        <form action ="public_user_login.php" method="post">
                             <h2>Public Login </h2>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
@@ -81,8 +81,8 @@ $vpnResult = mysqli_query($con, $query);
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary btn-lg">Login</button>
                                 </div>
+                        </form> 
 
-                        </form>          
                     </div></div></div>
                 </div>     
         </div>
