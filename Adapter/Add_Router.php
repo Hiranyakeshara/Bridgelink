@@ -4,17 +4,15 @@
   {
       //post all value
       extract($_POST);
+      $devicecount = mysqli_real_escape_string($con, $_POST["device_count"]);
       $query = "INSERT INTO `router` (`id`, `router_name`,`router_type`, `device_count`) VALUES (NULL, '".$router_name."', '".$router_type."','".$devicecount."');";
 
       mysqli_query($con,$query);
-      header("location:Add_Router.php");
+      header("Location: Add_Router.php");
+
   }
 
-
-
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -76,27 +74,27 @@
                                     <h6 class="m-0 font-weight-bold text-primary"> Device Adding form</h6>
                                 </div>
                                 <div class="card-body">
- <!-- Add Endpoints form -->
+<!-- Add Endpoints form -->
                                 <form action="Add_Router.php" method="post">
                                 <div class="mb-3">
                                     <label for="routername" class="form-label">Router Name</label>
                                     <input type="text" class="form-control" name="router_name" id="routername" >
                                 </div>
-                            <div class="mb-3">
-                            <label for="routername" class="form-label">Select Device Type</label>
-                             <select class="form-select" aria-label="Default select example" name="router_type">
-                             <option value="200"> 2000</option>
-                                <option value="1808">1808</option>
-                                <option value="Cisco">Cisco</option>
-                                <option value="TP Link">TP link</option>
-                            </select>
-                            </div>
                                 <div class="mb-3">
-                                    <label for="device_count" class="form-label">Device Count</label>
-                                    <input type="text" class="form-control" name="device_count" id="device_count">
+                                    <label for="routername" class="form-label">Select Device Type</label>
+                                    <select class="form-select" aria-label="Default select example" name="router_type">
+                                        <option value="200"> 2000</option>
+                                        <option value="1808">1808</option>
+                                        <option value="Cisco">Cisco</option>
+                                        <option value="TP Link">TP link</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="devicecount" class="form-label">Device Count</label>
+                                    <input type="text" class="form-control" name="device_count" id="devicecount">
                                 </div>
                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Router</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Add Router</button>
                                 </form>
  <!-- End of Add Endpoints form -->
                                 </div>

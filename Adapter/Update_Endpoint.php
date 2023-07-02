@@ -12,7 +12,7 @@ if(isset($_POST['update']))
 	$vpnname=$_POST['vpn_name'];
     $device_type=$_POST['device_type'];
 	
-        $result = mysqli_query($con, "UPDATE users SET device_name='$device_name', basenetwork='$basenetwork', ip='$ip', vpn_id='$vpnid' , vpn_name='$vpnname', device_type='$device_type'  WHERE id=$id");
+        $result = mysqli_query($con, "UPDATE endpoints SET device_name='$device_name', basenetwork='$basenetwork', ip='$ip', vpn_id='$vpnid' , vpn_name='$vpnname', device_type='$device_type'  WHERE id=$id");
         
         //redirectig to the display page. In our case, it is index.php
         header("Location: Add_Endpoints.php");
@@ -25,7 +25,7 @@ if(isset($_POST['update']))
 $id = $_GET['id'];
  
 //selecting data associated with this particular id
-$result = mysqli_query($con, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($con, "SELECT * FROM endpoints WHERE id=$id");
  
 while($row = mysqli_fetch_array($result))
 {
