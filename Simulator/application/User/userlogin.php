@@ -1,3 +1,14 @@
+<?php   
+
+include("./config.php");
+
+$query = "SELECT * FROM vpn";
+$vpnResult = mysqli_query($con, $query);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -21,16 +32,20 @@
                     <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="card h-100">
                     <div class="card-body">
-                        <form action ="LOGIN.php" method="post">
+                        <form action ="vpn_user.php" method="post">
 
                             <h2>VPN Login </h2> 
                                 <div class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupSelect01">Select (VPN)</label>
-                                    <select class="form-select" id="inputGroupSelect01">
-                                        <option selected>Choose...</option>
-                                        <option value="1">ClientVPN</option>
-                                        <option value="2">ManagerVPN</option>
-                                        <option value="3">AdminVPN</option>
+                                    <select class="form-select" id="inputGroupSelect01" name="vpn_id">
+                                    <?php
+                                                // Generate the options dynamically
+                                                while ($row = mysqli_fetch_array($vpnResult)) {
+                                                    $vpnId = $row['vpn_id'];
+                                                    $vpnName = $row['vpn_name'];
+                                                    echo "<option value=\"$vpnId\">$vpnName</option>";
+                                                }
+                                                ?>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
@@ -46,11 +61,13 @@
                                 </div>
 
                         </form>
+
+
                     </div></div></div>
                     <div class="col-sm-6">
                     <div class="card h-100">
                     <div class="card-body">
-                        <form action ="LOGIN.php" method="post">
+                        <form action ="public_user.php" method="post">
 
                             <h2>Public Login </h2>
                                 <div class="input-group mb-3">
