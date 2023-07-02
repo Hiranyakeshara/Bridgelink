@@ -53,11 +53,11 @@ if (isset($_POST["submit"])) {
                                     <form action="" method="post">
                                         <div class="mb-3">
                                             <label for="device_name" class="form-label">User Name</label>
-                                            <input type="text" class="form-control" name="user_name" id="device_name">
+                                            <input type="text" class="form-control" name="user_name" id="user_name">
                                         </div>
                                         <div class="mb-3">
                                             <label for="device_type" class="form-label">Password</label>
-                                            <input type="" class="form-control" name="password" id="device_type">
+                                            <input type="" class="form-control" name="password" id="password">
                                         </div>
                                    
                                         <button type="submit" name="submit" class="btn btn-primary">Add Public User</button>
@@ -68,7 +68,7 @@ if (isset($_POST["submit"])) {
                         <div class="col-lg-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Update VPN User Details</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Update Public User Details</h6>
                                 </div>
                                 <div class="card-body">
                                 <div class="table-responsive">
@@ -94,8 +94,8 @@ if (isset($_POST["submit"])) {
                                            <tr>
                                                 <td><?php echo $row["user_name"];?></td>
                                                 <td><?php echo $row["password"];?></td>
-                                                <td><a  href="Update_Endpoint.php?id=<?php echo $row['puser_id']; ?>" class="btn btn-primary" >Update</a>
-                                                <a href="Delete_Endpoint.php?id=<?php echo $row['puser_id']; ?>" class="btn btn-warning" >Delete</a></td>
+                                                <td><a  href="Update_Public_users.php?id=<?php echo $row['puser_id']; ?>" class="btn btn-primary" >Update</a>
+                                                <a href="Delete_Public_users.php?id=<?php echo $row['puser_id']; ?>" class="btn btn-warning" >Delete</a></td>
                                             </tr>
               <?php } ?>
                        
