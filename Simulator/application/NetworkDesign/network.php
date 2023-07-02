@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bridge Link </title>
     <link rel="stylesheet" href="./css/style.css">
+	
 </head>
 <body>
 <!--
@@ -21,15 +22,55 @@ The markup will be simple nested lists
 <div class="tree">
 	<ul>
 		<li>
-			<a href="#">Network Switch</a>
 			<ul>
 				<li>
-				<a href="#">Routers</a>
+				<a href="#">Users</a>
 					<ul>
+					<li>
+							<a href="#">VPN users</a>
+                            <ul>
 						<li>
-							<a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM vpn_users";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #25c47f" href="#"><?php echo $row["user_name"];?> | <?php echo $row["ip"];?>
+                        
+                        </a>
+                            
+<?php } ?>
+						</li>
+					</ul>
+                           
+						</li>
+						<li>
+							<a href="#">Public Users</a>
+                            <ul>
+						<li>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM public_users";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #73f5bd" href="#"><?php echo $row["user_name"];?>
+                        
+                        </a>
+                            
+<?php } ?>
+						</li>
+					</ul>
+                           
 						</li>
 					</ul>
 				</li>
@@ -40,9 +81,44 @@ The markup will be simple nested lists
 							<a href="#">Private Applications</a>
                             <ul>
 						<li>
-							<a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM app";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #25c47f" href="#"><?php echo $row["app_name"];?>
+                        
+                        </a>
+                            
+<?php } ?>
+						</li>
+					</ul>
+                           
+						</li>
+						<li>
+							<a href="#">Public Applications</a>
+                            <ul>
+						<li>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM public_app";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #73f5bd" href="#"><?php echo $row["app_name"];?>
+                        
+                        </a>
+                            
+<?php } ?>
 						</li>
 					</ul>
                            
@@ -50,41 +126,66 @@ The markup will be simple nested lists
 					</ul>
 				</li>
 				<li>
-					<a href="#">Network Users</a>
+					<a href="#">Network Units</a>
 					<ul>
 				
 						<li>
-							<a href="#">Public Users</a>
+							<a href="#">Components</a>
 							<ul>
 								<li>
-									<a href="#">Live Users</a>
+									<a class="btn btn-primary" href="#">Switches</a>
                                     <ul>
 						<li>
-							<a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM switch";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #b5e3ff" href="#"><?php echo $row["switch_name"];?>-><?php echo $row["port_count"];?>
+                        
+                        </a>
+                            
+
+                            <?php }  ?> 
 						</li>
 					</ul>
 								</li>
 								<li>
-									<a href="#">Blocked Users</a>
+									<a href="#">Routers</a>
                                     <!-- Blocked Users -->
                                     <ul>
 						<li>
-							<a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
-                            <a href="#">Grand Child</a>
+						<?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM router";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #56b0e8" href="#"><?php echo $row["router_name"];?>-><?php echo $row["device_count"];?>
+                        
+                        </a>
+                            
+
+                            <?php }  ?> 
                           
                             
 						</li>
 					</ul>
 								</li>
 								<li>
-									<a href="#">Registered Users</a>
+									<a href="#">Registered End-Points</a>
                                      <!-- Registered Users -->
                                     <ul>
-						<li>
+						<li >
                             
                         <?php
                 include("./connection/config.php");
@@ -96,7 +197,7 @@ The markup will be simple nested lists
 
         	?>
 
-							<a href="#"><?php echo $row["device_name"];?>-><?php echo $row["ip"];?>
+							<a style="background-color: white;" href="#"><?php echo $row["device_name"];?>-><?php echo $row["ip"];?>
                         
                         </a>
                             
@@ -107,13 +208,55 @@ The markup will be simple nested lists
 								</li>
 							</ul>
 						</li>
-						<li><a href="#">VPN users</a>
+						<li><a href="#">VPN </a>
                         <ul>
 								<li>
-									<a href="#">VPN live Users</a>
+									<a href="#">VPN Count</a>
+									<ul>
+						<li >
+                            
+                        <?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM vpn";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #e8a790;" href="#"><?php echo $row["vpn_name"];?> 
+                        
+                        </a>
+                            
+
+                            <?php }  ?> 
+						</li>
+					</ul>
 								</li>
 								<li>
-									<a href="#">VPN created</a>
+									<a href="#">VPN Users</a>
+									<ul>
+						<li >
+                            
+                        <?php
+                include("./connection/config.php");
+        	    
+                  $query ="SELECT * FROM vpn_users";
+                  $sql = mysqli_query($con,$query);
+                  while($row = mysqli_fetch_array($sql))
+                  {
+
+        	?>
+
+							<a style="background-color: #c45025;" href="#"><?php echo $row["user_name"];?>-><?php echo $row["ip"];?>
+                        
+                        </a>
+                            
+
+                            <?php }  ?> 
+						</li>
+					</ul>
 								</li>
 							</ul>
                             </li>
@@ -121,10 +264,7 @@ The markup will be simple nested lists
 				</li>
 			</ul>
 		</li>
-        <li>
-			<a href="#">Public Network</a>
-        
-		</li>
+       
 	</ul>
 
     
