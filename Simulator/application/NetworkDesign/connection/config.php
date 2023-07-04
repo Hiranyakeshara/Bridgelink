@@ -2,7 +2,7 @@
 
 // Create connection
 
-    $con = new mysqli("localhost", "root", "", "bridgelink");
+    $con = new mysqli("sql12.freesqldatabase.com", "sql12630523", "2rnI9AiqCc", "sql12630523");
 
 // Check connection
 

@@ -1,8 +1,22 @@
+<?php
+session_start();
+
+if (isset($_SESSION['SESSION_USERNAME'])) {
+    // User is logged in
+ 
+
+} else {
+    // User is not logged in
+    echo "User is not logged in";
+    header("Location: login.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +30,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -28,7 +42,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include_once('../Adapter/components/sidenav/sidbar.php') ;   ?>
+        <?php include_once('../Adapter/components/sidenav/sidbar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,7 +52,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include_once('../Adapter/components/header/topbar.php') ;   ?>
+                <?php include_once('../Adapter/components/header/topbar.php'); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -46,7 +60,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Traffic Monitor</h1>
-                    <p class="mb-4">Network Traffic Analaysis in each VPN's | Departments | Public Access</p>
+                    <p class="mb-4">Network Traffic Analysis in each VPN's | Departments | Public Access</p>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -56,54 +70,20 @@
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Overall  Traffic </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"> Network Traffic</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
+                                
+                                        <!-- Area Chart goes here -->
+                                        <?php include_once('./vpn_traffic_monitor.php'); ?>
+                                   
                                 </div>
+                                <div class="card-footer"><?php echo $traffic_percentage . "%";  ?></div>
                             </div>
 
-                            <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">VPN user traffic on Network ID Based</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the bar chart can be found in the
-                                    <code>/js/demo/chart-bar-demo.js</code> file.
-                                </div>
-                            </div>
+                      
 
                         </div>
-
-                        <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Public User Traffic</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
-                                </div>
-                            </div>
-                        </div>
-                 
 
                     </div>
 
@@ -153,6 +133,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

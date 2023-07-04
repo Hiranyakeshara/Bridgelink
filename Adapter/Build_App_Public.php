@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['SESSION_USERNAME'])) {
+    // User is logged in
+
+
+} else {
+    // User is not logged in
+    echo "User is not logged in";
+    header("Location: login.php");
+}
+?>
+
+
+
+
+
 <?php  
 
   include("./connection/config.php");

@@ -1,8 +1,25 @@
 <?php
+session_start();
+
+if (isset($_SESSION['SESSION_USERNAME'])) {
+    // User is logged in
+
+
+} else {
+    // User is not logged in
+    echo "User is not logged in";
+    header("Location: login.php");
+}
+?>
+
+
+
+<?php
     include("./connection/config.php");
 
     // Retrieve the counts from the database
     $query = "SELECT
+                (SELECT COUNT(*) FROM ping) AS ping_count,
                 (SELECT COUNT(*) FROM public_users) AS total_public_users_count,
                 (SELECT COUNT(*) FROM vpn_users) AS total_vpn_users_count,
                 (SELECT COUNT(*) FROM ip_address) AS total_ip_addresses_count,
@@ -16,6 +33,7 @@
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
+        $ping_count = $row['ping_count'];
         $total_public_users_count = $row['total_public_users_count'];
         $total_vpn_users_count = $row['total_vpn_users_count'];
         $total_ip_addresses_count = $row['total_ip_addresses_count'];
@@ -104,7 +122,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Ping Counts</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_ping_count; ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $ping_count; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>

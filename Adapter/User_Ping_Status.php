@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['SESSION_USERNAME'])) {
     // User is logged in
-  
+ 
 
 } else {
     // User is not logged in
@@ -11,7 +11,6 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
     header("Location: login.php");
 }
 ?>
-
 
 
 
@@ -65,8 +64,7 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">View Live Users</h1>
-                    <p class="mb-4"> Users are shown in the table given below</p>
+                    <h1 class="h3 mb-2 text-gray-800">Ping Status</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -79,16 +77,16 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
                                     <thead>
                                         <tr>
                                             <th>User Name</th>
-                                            <th>Actual IP address</th>
-                                            <th>Time</th>
-                                            <th>Browser Name</th>
+                                            <th>Ping IP address</th>
+                                            <th>Message</th>
+                                           
                                        
                                         </tr>
                                     </thead>
                                     <tbody>
                 <?php
         	    include("./connection/config.php");
-                $query ="SELECT * FROM logged_ips WHERE logout_time IS NULL";
+                $query ="SELECT * FROM ping ";
                 $sql = mysqli_query($con,$query);
                 while($row = mysqli_fetch_array($sql))
                 {
@@ -96,9 +94,9 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
         	    ?>
                                         <tr>
                                             <td><?php echo $row["username"];?></td>
-                                            <td><?php echo $row["ip_address"];?></td>
-                                            <td><?php echo $row["login_time"];?></td>
-                                            <td><?php echo $row["browser_name"];?></td>
+                                            <td><?php echo $row["get_ip"];?></td>
+                                            <td><?php echo $row["message"];?></td>
+                                           
                                         </tr>
           <?php } ?>
                                         
@@ -118,7 +116,7 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Bridge Link 2023</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -135,25 +133,7 @@ if (isset($_SESSION['SESSION_USERNAME'])) {
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

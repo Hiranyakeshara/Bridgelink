@@ -73,7 +73,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="Add_VPN.php">Add VPNs</a>
-            <a class="collapse-item" href="#">User PING status</a>
+            <a class="collapse-item" href="User_Ping_Status.php">User PING status</a>
         </div>
     </div>
 </li>

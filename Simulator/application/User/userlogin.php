@@ -1,6 +1,7 @@
 <?php   
 
 include("./config.php");
+session_start();
 
 $query = "SELECT * FROM vpn";
 $vpnResult = mysqli_query($con, $query);
